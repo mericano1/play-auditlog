@@ -11,7 +11,7 @@ public class DefaultAuditLogEvents {
     	return Session.current() != null ? Session.current().get("username") : "anonymous";
     }
 
-    static void onCreate(String model, String modelId) {
+    static void onCreate(String model, Long modelId) {
         String actor = getActor();
         new SaveAuditLogEvent(
                 model,
@@ -24,7 +24,7 @@ public class DefaultAuditLogEvents {
         ).now();
     }
 
-    static void onUpdate(String model, String modelId, String property, String oldValue, String value) {
+    static void onUpdate(String model, Long modelId, String property, String oldValue, String value) {
     	String actor = getActor();
         new SaveAuditLogEvent(
                 model,
@@ -37,7 +37,7 @@ public class DefaultAuditLogEvents {
         ).now();
     }
 
-    static void onDelete(String model, String modelId) {
+    static void onDelete(String model, Long modelId) {
     	String actor = getActor();
         new SaveAuditLogEvent(
                 model,

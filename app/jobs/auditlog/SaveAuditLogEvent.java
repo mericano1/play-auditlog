@@ -9,14 +9,14 @@ import play.modules.auditlog.Auditable.Operation;
 public class SaveAuditLogEvent extends Job {
 
     private String model;
-    private String modelId;
+    private Long modelId;
     private Operation operation;
     private String property;
     private String oldValue;
     private String newValue;
     private String actor;
 
-    public SaveAuditLogEvent(String model, String modelId, Operation operation, String property, String oldValue, String newValue, String actor) {
+    public SaveAuditLogEvent(String model, Long modelId, Operation operation, String property, String oldValue, String newValue, String actor) {
         this.model = model;
         this.modelId = modelId;
         this.operation = operation;

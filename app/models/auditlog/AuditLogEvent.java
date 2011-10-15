@@ -16,7 +16,7 @@ public class AuditLogEvent extends Model {
     public String model;
 
     @Required
-    public String modelId;
+    public Long modelId;
 
     @Required
     @Enumerated(EnumType.STRING)
@@ -31,5 +31,8 @@ public class AuditLogEvent extends Model {
     public String actor;
 
     public Date createdAt;
+    
+    public boolean processed = false;
+    
 
 }

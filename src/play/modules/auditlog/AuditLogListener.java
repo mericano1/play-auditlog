@@ -19,7 +19,7 @@ public class AuditLogListener implements PostInsertEventListener, PostUpdateEven
     	Model entity = (Model) event.getEntity();
     	if (hasAnnotation(entity.getClass(),Operation.CREATE)) {
             String model = entity.getClass().getName();
-            String modelId = entity._key().toString();
+            Long modelId = entity.id;
             AuditLog.invoke("onCreate",model,modelId);
         }
     }
@@ -28,7 +28,7 @@ public class AuditLogListener implements PostInsertEventListener, PostUpdateEven
         Model entity = (Model) event.getEntity();
         if (hasAnnotation(entity.getClass(),Operation.UPDATE)) {
             String model = entity.getClass().getName();
-            String modelId = entity._key().toString();
+            Long modelId = entity.id;
             String[] properties = event.getPersister().getPropertyNames();
             Object[] oldValues = event.getOldState();
             Object[] values = event.getState();
@@ -54,7 +54,7 @@ public class AuditLogListener implements PostInsertEventListener, PostUpdateEven
     	Model entity = (Model) event.getEntity();
         if (hasAnnotation(entity.getClass(),Operation.DELETE)) {
             String model = entity.getClass().getName();
-            String modelId = entity._key().toString();
+            Long modelId = entity.id;
             AuditLog.invoke("onDelete",model,modelId);
         }
     }
