@@ -2,13 +2,17 @@ package controllers.auditlog;
 
 import jobs.auditlog.SaveAuditLogEvent;
 import play.modules.auditlog.Auditable.Operation;
+import play.modules.auditlog.IActorProvider;
 import play.mvc.Controller;
 import play.mvc.Scope.Session;
+import utils.ActorUtils;
 
 public class DefaultAuditLogEvents {
 
     private static String getActor() {
-    	return Session.current() != null ? Session.current().get("username") : "anonymous";
+    	IActorProvider provider = ActorUtils.getProvider();
+    	if (provider == null) throw new RuntimeException("You need to implement the interface IActorProvider to tell me how to get the actor");
+		return provider.getActor();
     }
 
     static void onCreate(String model, Long modelId) {
