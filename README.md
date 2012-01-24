@@ -30,14 +30,14 @@ Then you need to implement the interface IActorProvider to tell auditlog module 
 
 A simple implementation would look like this
 
-  package utils;
+    package utils;
 
-  import models.Event;
-  import play.db.jpa.JPABase;
-  import play.modules.auditlog.IActorProvider;
-  import play.mvc.Scope.Session;
+    import models.Event;
+    import play.db.jpa.JPABase;
+    import play.modules.auditlog.IActorProvider;
+    import play.mvc.Scope.Session;
   
-  public class AuditLogActorProvider implements IActorProvider {
+    public class AuditLogActorProvider implements IActorProvider {
 	
 	@Override
 	public String getActor() {
@@ -52,7 +52,7 @@ A simple implementation would look like this
 		throw new IllegalArgumentException("Cannot find the actor for this action. Will have to skip this log");
 	}
   
-  }
+    }
 
 
 
