@@ -74,4 +74,10 @@ If you want to record create and updates then you would use
 
 well you got the idea.
 
- 
+
+Also you will need to add the following properties in the application.conf file
+
+    # audit - log
+    hibernate.ejb.event.post-insert=play.modules.auditlog.AuditLogListener
+    hibernate.ejb.event.post-update=play.modules.auditlog.AuditLogListener
+    hibernate.ejb.event.post-delete=play.modules.auditlog.AuditLogListener 
